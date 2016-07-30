@@ -1,0 +1,45 @@
+<?php
+	if(isset($_POST['sub'])){
+		$rows = $_POST['rows'];
+		$cols = $_POST['cols'];
+		$color;
+		echo "<table border=1 align=center width=800>";
+		for($i=0;$i<$rows;$i++){
+			if($i%2==0){
+				$color = blue;
+			}else{
+				$color = red;
+			}
+			echo "<tr bgColor = ".$color." onmouseover=aa(this) onmouseout=bb(this)>";
+			for($j=0;$j<$cols;$j++){
+				echo "<td>";
+				echo $i;
+				echo "</td>";
+			}
+			echo "</tr>";
+		}
+		echo "</table>";
+	}
+?>
+
+
+
+<form action="gehanghuanse.php" method="post">
+	<input name="rows" type="text">
+	<br/>
+	<input type="text" name="cols">
+	<br/>
+	<input type="submit" name="sub" value="打印">
+<form>
+	
+
+<script>
+	var $baseColor;
+	function aa(obj){
+		$baseColor=obj.bgColor;
+		obj.bgColor = 'green';
+	}
+	function bb(obj){
+		obj.bgColor = $baseColor;
+	}
+</script>
