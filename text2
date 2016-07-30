@@ -1,0 +1,82 @@
+<?php
+	if(isset($_GET['sub'])){
+		$num1 = $_GET['num1'];
+		$num2 = $_GET['num2'];
+		$ysf = $_GET['ysf'];
+		$sum = 0;
+		$flag = false;
+		if(is_numeric($num1)&&is_numeric($num2)&&!($_GET['ysf']=='/'&&$_GET['num2']==0)){
+			$flag = true;
+			switch($ysf){
+				case '+':
+					$sum=$num1+$num2;
+					break;
+				case '-':
+					$sum=$num1-$num2;
+					break;
+				case '*':
+					$sum=$num1*$num2;
+					break;
+				case '/':
+				 	$sum=$num1/$num2;
+					break;
+				case '%':
+				 	$sum=$num1%$num2;
+					break;
+				default:
+					return 0;
+			}
+		}else{
+			$flag=false;
+		}
+		
+	}
+?>
+
+	<form action="text1.php" method="GET">
+		<table border="2" width="800" align="center">
+		<tr>
+			<td>
+				<input type="text" name="num1" value=<?php echo $_GET['num1']?$_GET['num1']: ' '?>>
+			</td>
+			<td>
+				<select name="ysf">
+					<option value="+" <?php if($_GET['ysf']=='+'){
+						echo "selected";
+					}?> >+</option>
+					<option value="-" <?php if($_GET['ysf']=='-'){
+						echo "selected";
+					}?>>-</option>
+					<option value="*" <?php if($_GET['ysf']=='*'){
+						echo "selected";
+					}?>>x</option>
+					<option value="/" <?php if($_GET['ysf']=='/'){
+						echo "selected";
+					}?>>/</option>
+					<option value="%" <?php if($_GET['ysf']=='%'){
+						echo "selected";
+					}?>>%</option>
+				</select>
+			</td>
+			<td>
+				<input type="text" name="num2" value=<?php echo $_GET['num2']?$_GET['num2']: ' '?>>
+			</td>
+			<td>
+				<input type="submit" name="sub" value="计算">
+			</td>
+		</tr>
+		<?php
+		if(isset($_GET['sub'])){
+			echo "<tr>";
+			echo "<td colspan=4>";
+			if($flag){
+				echo "结果为".$num1.' '.$ysf.' '.$num2.' = '. $sum;
+			}else{
+				echo "输入数据违法";
+			}
+			echo "</td>";
+			echo "</tr>";
+		}		
+		?>
+		</table>
+	</form>
