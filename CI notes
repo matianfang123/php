@@ -1,0 +1,48 @@
+CI是PHP的MVC框架 （视图和业务逻辑分离）   cakephp  yii   lavatray thinkphp
+MVC：（入口文件，路由功能，MVC特性）
+index.php通过入口文件访问项目中的功能
+入口文件-》路由功能-》控制器-》分发视图和数据模型
+
+system（是CI的核心文件夹）core（）
+
+application：   config（autoload.php,database.php,routes.php,config.php）
+controllers/models/views(MVC)
+
+从view到controller：
+进行发送：get提交（url？/ajax/restful/curl）,post提交(form/ajax/restful/curl)
+进行接收：get（$_GET/Input类/uri类）$this->input->get(),$this->uri->segment(第几段)  
+post($_POST  $this->input->post())
+
+从controller到view：
+发送：$this->load->view('view名字',数据数组$arr)    $this->load->vars($arr1)
+接受：1，echo显示单一变量
+      2，array，object 使用foreach（）
+
+从controller到model：
+加载model：$this->load->model(model名)，$this->model名->方法名（）
+返回controller：return $result->row()返回结果行，$result->result()返回结果数组
+
+
+需求---模块加载（）autoload.php
+database.php    config.php(配置session，key)    route.php
+redirect（控制器/方法）
+
+site_url()根据配置文件返回当前站点
+<base href='<?php echo site_url()?>'>  
+model只写早做数据库的代码 
+
+
+$this->session->set_userdata()  设置session
+
+$this->session->userdata()    读session
+
+
+
+
+
+
+
+
+
+
+
