@@ -1,0 +1,132 @@
+XAMPP（80,443）
+Apache---80 port
+Apache 配置文件   httpd.conf(# ;  完成文本注释)
+443--SSL https  配置文件：httpd-ssl.conf
+html css js ---chrome(v8 解释器)
+php（php.ini  解析  php code---hemi code/css/js） 通过apache发送给chrome
+配置php.ini
+php报错选项（error， warning， notice）
+php可嵌入html标签
+php编写写在php标签中《？php？》
+echo var_dump() print_r()
+php类型：8种类型：
+4个标量：int float string bool 
+2个复合类型：array  object
+2个特殊类型：null resource
+类型转化：  int->string  settype（）或（int）a
+	string-》int 
+类型检测： is_null($a)  is_int()  isset()是否创建   unset()销毁   empty()s是否为空 is_numberic()    variable handing
+serialize序列化 字符串转化成对象   unserialize反序列化 对象转化成字符串
+拼接字符串用.
+三码一致（文件编码，浏览器解码，数据库编码）
+文件编码（ANSI , UTF-8, UNICODE）
+ANSI
+浏览器解码：GBK/UTF-8 GB18030/GB2312   BIG5
+ANSI--GBK
+UTF-8---UTF-8
+数据包先执行包头在执行包体如果包头跳转则包体代码无法执行。
+PHP变量区分大小写  PHP函数不区分大小写  $变量名  $$变量名
+http     get（url提交）    post（）    delete     put重置状态
+get   $_GET['name 属性']   post  $_POST['name属性']
+get： url，ajax，curl  $_GET[]
+post: form,ajax,curl   $_POST[]
+phpinfo()
+html压缩(gzip  bz2)  js压缩（去空格）  css压缩
+grunt/gulp/webpack
+md5
+php中可以使用echo来输出script脚本 也可以输出html代码，但php变量不能直接用于script
+注意双引号截断问题  通过点的方式拼接字符串。
+php文件里可以混编php标签（多个 共用一个作用域），script标签，html代码。
+变量判别与消亡（unset消亡栈中内存）函数（isset/is_numberic/empty/explode切分字符串转化数组/count数组长度/strlen数组长度/substr/iconv_substr 截取字符串的部分/settype/gettype )
+数据生存在内存中。数据存储在硬盘上（文件（数据文件，可执行体文件），数据库）。
+文件（text(GBK/utf-8),xml,json(json_encode — 对变量进行 JSON 编码  json_decode — 对 JSON 格式的字符串进行编码 )）
+header("Content-type:text/html charset=GBK");
+数据库（关系型数据库，NoSQL数据库）
+数据库加载基本类型   string array  object
+var_dump();调试方法*********
+源码输出：<pre></pre>配合echo
+可变变量与可变函数。***********
+赋值和赋址的不同
+php弱类型语言
+宏定义：define('常量名'，‘常量值’);
+define('servername','localhost')
+mysql_connect('localhost','root','');
+echo __FILE__; 获取文件路径。
+echo __LINE__; 显示当前行数。
+运算符：  .=  不断拼接字符串。 
+          ？ ：三目运算符。在选择赋值时建议使用。
+@屏蔽错误：@mysqli_connect('localhist','root','11') or die("数据库连接失败")；
+die();相当于断点配合var_dump() 可进行调试。
+对象名->方法名   实例化对象调用成员方法      类名::方法名    调用静态成员方法 
+前++与后++。。
+\转译一般在读取路径时使用  “c:\\windows”
+enctype=""去_FILE中找
+$_POST  $_GET $_FILES  记住大写****
+随机函数：rand（最小值，最大值）    mt_rand
+自定义函数声明：无参函数，有参函数，有return的叫函数  没有return叫过程。
+函数变量范围：global
+null+1=1
+可变变量与可变函数。
+如果一个变量后面有括号$val();就将寻找到与变量值同名的函数
+系统函数：
+bool copy(string $source,string $dest)将文件从 source 拷贝到 dest。 
+bool chown(string $filename,mixed $user)尝试将文件 filename 的所有者改成用户 user（由用户名或用户 ID 指定）。 只有超级用户可以改变文件的所有者。 
+带有mixed表示你可以传任意类型的数据
+bool arsort(array &$array【】)本函数对数组进行排序，数组的索引保持和单元的关联。 索引不改变。
+带有&参数的函数 表示引用赋值 带有【】的时候代表里面的参数可选
+int array_unshift  ( array &$array  , mixed  $var  [, mixed  $...  ] )将传入的单元插入到 array 数组的开头。注意单元是作为整体被插入的，因此传入单元将保持同样的顺序。所有的数值键名将修改为从零开始重新计数，所有的文字键名保持不变。 
+带有...表示可以传任意多个参数。
+array func_get_args  ( void )
+array array_filter  ( array $input  [, callable  $callback  = ""  ] )
+依次将 input 数组中的每个值传递到 callback 函数。如果 callback 函数返回 TRUE ，则 input 数组的当前值会被包含在返回的结果数组中。数组的键名保留不变。 
+callable  回调函数，都是同步的。
+数据库：：：******************************8
+关系型数据库主要是表和表之间的关联
+约束：主键约束， 外键约束 ，默认值约束，非空约束（not null）。
+关系型数据库里每一个表只有一个主键（值不重复） 却可以有多个外键。
+创建数据表  列名类型：int char（固定字符型）  varchar（可变字符型）  text   date  timestampe 
+php连接数据库，php选中数据库名，设置字符编码
+1.php内加载2.php  require  include
+resource mysql_connect  ([ string $server  [, string $username  [, string $password  [, bool $new_link  [, int $client_flags  ]]]]] )
+打开或重复使用一个到 MySQL 服务器的连接。 mysqli
+bool mysqli_select_db  ( mysqli  $link  , string $dbname  )
+针对本次数据库连接用于数据库查询的默认数据库。 
+bool mysqli_set_charset  ( mysqli  $link  , string $charset  ) utf8
+设置在数据库间传输字符时所用的默认字符编码。
+数据库关键字：***************
+增：insert into 表名(列名,...) values(值，...)列名和值应该一一对应先后顺序一致。
+查：select * from 表名 where 1  order by id asc/desc：根据什么进行排序正序/倒叙   limit（从哪开始，多少个）表名 where like ’%lao%‘模糊搜索
+删：delete from 
+改：update 表名 set 列名=值，列名=值。。。where 条件
+now（）自动记录当前时间。
+mixed  mysqli_query  ( mysqli  $link  , string $query  [, int $resultmode  = MYSQLI_STORE_RESULT  ] //发送字符串到数据库
+mixed  mysqli_fetch_array  ( mysqli_result  $result  [, int $resulttype  = MYSQLI_BOTH  ] )/资源转化为数组
+cookie（存储在本地浏览器的缓存文件夹）/session（服务器的相应文件夹）
+setcookie('cookie键名'，'cookie键值',生存时间)；
+bool move_uploaded_file  ( string $filename  , string $destination  )
+
+本函数检查并确保由 filename 指定的文件是合法的上传文件（即通过 PHP 的 HTTP POST 上传机制所上传的）。如果文件合法，则将其移动为由 destination 指定的文件。 
+
+这种检查显得格外重要，如果上传的文件有可能会造成对用户或本系统的其他用户显示其内容的话。 
+
+ajax：$.get/post('php地址'，“username=”+ 要传的值,function(data){回调函数}，‘text’)
+php地址： php文件 或   restful/user/reg
+http 传输     text   xml     json
+$_GET['username'];post（headers）
+计算时间函数：time（）   date（）   mktime（）   
+string date  ( string $format  [, int $timestamp  ] )
+$timestamp  是时间戳  $format 为有特定意义字符，查找手册。
+time（）和mktime()可以返回时间戳，可作为date的第二个参数进行传递。
+
+
+
+
+
+
+
+
+
+
+
+
+
